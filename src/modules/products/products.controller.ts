@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./products.service";
 
+// create product
 const createProduct = async (req: Request, res: Response) => {
   try {
     const productData = req.body;
     const result = await ProductServices.createProduct(productData);
-    res.json({
+    res.status(200).json({
       success: true,
       message: "Product created successfully!",
       data: result,
@@ -18,6 +19,24 @@ const createProduct = async (req: Request, res: Response) => {
     });
   }
 };
+// get all products from database
+const getAllProducts = async (req: Request, res: Response) => {
+  try {
+    const result = await ProductServices.getAllProducts();
+    res.status(200).json({
+      success: true,
+      message: "Product fetched successfully!",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetched products",
+      error: error.message,
+    });
+  }
+};
 export const ProductControllers = {
   createProduct,
+  getAllProducts,
 };
