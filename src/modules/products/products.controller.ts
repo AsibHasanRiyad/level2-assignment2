@@ -41,11 +41,19 @@ const getSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const result = await ProductServices.getSingleProduct(productId);
-    res.status(200).json({
-      success: true,
-      message: "Product fetched successfully!",
-      data: result,
-    });
+    if (result) {
+      res.status(200).json({
+        success: true,
+        message: "Product fetched successfully!",
+        data: result,
+      });
+    } else {
+      // in case of searching with an id that doesn't exist in our database
+      res.status(500).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
   } catch (error: any) {
     res.status(500).json({
       success: false,
@@ -71,6 +79,7 @@ const updateSingleProduct = async (req: Request, res: Response) => {
         data: result,
       });
     } else {
+      // in case of updating with an id that doesn't exist in our database
       res.status(404).json({
         success: false,
         message: "Product not found",
