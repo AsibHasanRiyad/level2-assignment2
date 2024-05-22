@@ -105,7 +105,7 @@ const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const result = await ProductServices.deleteProduct(productId);
-    console.log(result.deletedCount);
+    // console.log(result.deletedCount);
     if (result.deletedCount > 0) {
       res.status(200).json({
         success: true,
