@@ -1,4 +1,4 @@
-export interface TVariant {
+export interface TVariants {
   type: string;
   value: string;
 }
@@ -12,6 +12,6 @@ export interface TProducts {
   price: number;
   category: string;
   tags: string[];
-  variants: TVariant[];
+  variants: TVariants[];
   inventory: TInventory;
 }
