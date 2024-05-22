@@ -7,13 +7,22 @@ import { TProducts } from "../products/products.interface";
 const createOrder = async (req: Request, res: Response) => {
   try {
     const orderData = req.body;
-    console.log(req.body.productId);
+    // console.log(req.body.productId);
     const { productId, quantity } = req.body;
 
     // check if product is available
     const OrderingProduct = await ProductServices.getSingleProduct(productId);
-    const availableQuantity = OrderingProduct?.inventory.quantity;
+
     // if not available
+    if (!OrderingProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    // if Insufficient
+    const availableQuantity = OrderingProduct?.inventory.quantity;
     if (
       (availableQuantity as number) < 1 ||
       (availableQuantity as number) < quantity
@@ -24,13 +33,22 @@ const createOrder = async (req: Request, res: Response) => {
       });
     } else {
       const result = await OrderServices.createOrder(orderData);
+
       const newQuantity = (availableQuantity as number) - quantity;
-      console.log(OrderingProduct);
+      // console.log(OrderingProduct);
       (OrderingProduct as TProducts).inventory.quantity = newQuantity;
+
+      // check inStock and update
+      if (newQuantity === 0) {
+        (OrderingProduct as TProducts).inventory.inStock = false;
+      }
+
       const update = await ProductServices.updateSingleProduct(
         productId,
         OrderingProduct as TProducts
       );
+      // console.log(update, "Update");
+
       res.status(200).json({
         success: true,
         message: "Order created successfully!",
