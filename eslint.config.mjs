@@ -21,5 +21,8 @@ export default tseslint.config(
         ...globals.node,
       },
     },
+  },
+  {
+    ignores: [".env", "dist/", "node_modules/"],
   }
 );
