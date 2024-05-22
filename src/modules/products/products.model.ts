@@ -43,7 +43,7 @@ const productsSchema = new Schema<TProducts>({
     type: [String],
     required: true,
   },
-  variants: variantSchema,
+  variants: [variantSchema],
   inventory: inventorySchema,
 });
 
