@@ -13,7 +13,14 @@ const getAllOrders = async () => {
   return result;
 };
 
+//  search orders by email
+const searchOrders = async (query: any) => {
+  const result = await Orders.find({ email: { $eq: query } });
+  return result;
+};
+
 export const OrderServices = {
   createOrder,
   getAllOrders,
+  searchOrders,
 };

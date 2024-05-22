@@ -23,7 +23,14 @@ const createOrder = async (req: Request, res: Response) => {
 // get all orders
 const getAllOrders = async (req: Request, res: Response) => {
   try {
-    const result = await OrderServices.getAllOrders();
+    const { email } = req.query;
+    console.log(email);
+    let result;
+    if (email) {
+      result = await OrderServices.searchOrders(email);
+    } else {
+      result = await OrderServices.getAllOrders();
+    }
     res.status(200).json({
       success: true,
       message: "Orders fetched successfully",
@@ -32,7 +39,7 @@ const getAllOrders = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(500).json({
       success: false,
-      message: "Failed to add new product",
+      message: "Failed to fetch orders",
       error: error.message,
     });
   }
