@@ -20,6 +20,16 @@ const getSingleProduct = async (id: string) => {
   return result;
 };
 
+// search products
+const searchProducts = async (query: any) => {
+  let search: any = {};
+  if (query.searchTerm) {
+    search.name = { $regex: query.searchTerm, $options: "i" };
+  }
+  const result = await Products.find(search);
+  return result;
+};
+
 // update single product
 const updateSingleProduct = async (
   id: string,
@@ -37,4 +47,5 @@ export const ProductServices = {
   getAllProducts,
   getSingleProduct,
   updateSingleProduct,
+  searchProducts,
 };
