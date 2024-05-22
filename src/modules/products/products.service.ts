@@ -42,10 +42,19 @@ const updateSingleProduct = async (
   return result;
 };
 
+// delete product
+const deleteProduct = async (id: string) => {
+  const result = await Products.deleteOne({
+    _id: new mongoose.Types.ObjectId(id),
+  });
+  return result;
+};
+
 export const ProductServices = {
   createProduct,
   getAllProducts,
   getSingleProduct,
   updateSingleProduct,
   searchProducts,
+  deleteProduct,
 };

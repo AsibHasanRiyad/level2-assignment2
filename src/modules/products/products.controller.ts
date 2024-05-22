@@ -69,25 +69,6 @@ const getSingleProduct = async (req: Request, res: Response) => {
   }
 };
 
-// search product
-// const searchProduct = async (req: Request, res: Response) => {
-//   try {
-//     const query = req.query;
-//     const result = await ProductServices.searchProducts(query);
-//     res.status(200).json({
-//       success: true,
-//       message: "Product fetched successfully!",
-//       data: result,
-//     });
-//   } catch (error: any) {
-//     res.status(500).json({
-//       success: false,
-//       message: "Failed to fetched products",
-//       error: error.message,
-//     });
-//   }
-// };
-
 // update single product
 const updateSingleProduct = async (req: Request, res: Response) => {
   try {
@@ -119,10 +100,37 @@ const updateSingleProduct = async (req: Request, res: Response) => {
   }
 };
 
+// delete product
+const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const result = await ProductServices.deleteProduct(productId);
+    console.log(result.deletedCount);
+    if (result.deletedCount > 0) {
+      res.status(200).json({
+        success: true,
+        message: "Product deleted successfully!",
+        data: result,
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Product Not Found",
+      });
+    }
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong! Please try again. ",
+      error: error.message,
+    });
+  }
+};
+
 export const ProductControllers = {
   createProduct,
   getAllProducts,
   getSingleProduct,
   updateSingleProduct,
-  // searchProduct,
+  deleteProduct,
 };
