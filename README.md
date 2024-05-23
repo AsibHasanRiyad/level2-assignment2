@@ -12,14 +12,18 @@ This is an order management system for managing products and orders.
 
 ### Installation
 
-1.  Open your terminal Clone the git repository
-
-2.  Install all dependencies:
-
-    ```sh
-    npm install
-    ```
+1. Clone the git repository and open your terminal:
+   ```sh
+   git clone https://github.com/your-repository.git
+   cd your-repository
+   ```
 ````
+
+2. Install all dependencies:
+
+   ```sh
+   npm install
+   ```
 
 3. Create a `.env` file in the root directory if it does not already exist and add the following code:
 
