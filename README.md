@@ -1,4 +1,4 @@
-````markdown
+````
 # Order Management System
 
 ### Prerequisites
