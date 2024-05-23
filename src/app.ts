@@ -10,7 +10,7 @@ app.use(express.json());
 app.use("/api/products", ProductRoutes);
 app.use("/api/orders", OrderRoutes);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "Route not found",

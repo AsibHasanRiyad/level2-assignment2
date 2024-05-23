@@ -22,7 +22,7 @@ const getSingleProduct = async (id: string) => {
 
 // search products
 const searchProducts = async (query: any) => {
-  let search: any = {};
+  const search: any = {};
   if (query.searchTerm) {
     search.name = { $regex: query.searchTerm, $options: "i" };
   }
