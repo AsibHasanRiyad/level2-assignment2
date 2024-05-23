@@ -7,11 +7,12 @@
 
 ### Installation
 
+````
 1. Open your terminal and Clone the git repository
    ```sh
    git clone https://github.com/your-repository.git
    cd your-repository
-   ```
+````
 
 ````
 
