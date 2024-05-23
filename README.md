@@ -1,4 +1,4 @@
-````markdown
+```markdown
 # Order Management System
 
 This is an order management system for managing products and orders.
@@ -12,7 +12,8 @@ This is an order management system for managing products and orders.
 
 ### Installation
 
-1. Open your terminal and Clone the git repository.
+1.  Open your terminal Clone the git repository
+```
 
 2. Install all dependencies:
 
@@ -32,7 +33,7 @@ This is an order management system for managing products and orders.
 Start the server:
 
 ```sh
-npm start:dev
+npm start
 ```
 
 The server should now be running on `http://localhost:3000`.
@@ -45,6 +46,7 @@ The server should now be running on `http://localhost:3000`.
 
 ```http
 POST http://localhost:3000/api/products
+Content-Type: application/json
 
 {
   "name": "iPhone 13 Pro",
@@ -163,4 +165,3 @@ Hello World!
 
 Make sure to replace placeholders like `https://github.com/your-repository.git` with your actual repository URL. This `README.md` file provides clear instructions for setting up, running the application, and using the API endpoints.
 ```
-````
