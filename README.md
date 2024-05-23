@@ -1,4 +1,4 @@
-```markdown
+````markdown
 # Order Management System
 
 This is an order management system for managing products and orders.
@@ -13,13 +13,13 @@ This is an order management system for managing products and orders.
 ### Installation
 
 1.  Open your terminal Clone the git repository
-```
 
-2. Install all dependencies:
+2.  Install all dependencies:
 
-   ```sh
-   npm install
-   ```
+    ```sh
+    npm install
+    ```
+````
 
 3. Create a `.env` file in the root directory if it does not already exist and add the following code:
 
