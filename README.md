@@ -1,4 +1,3 @@
-````markdown
 # Order Management System
 
 ### Prerequisites
@@ -13,6 +12,7 @@
    git clone https://github.com/your-repository.git
    cd your-repository
    ```
+
 ````
 
 2. Install all dependencies:
@@ -33,7 +33,7 @@
 Start the server:
 
 ```sh
-npm start
+npm start:dev
 ```
 
 The server should now be running on `http://localhost:3000`.
@@ -165,3 +165,4 @@ Welcome to Order Management!
 
 Make sure to replace placeholders like `https://github.com/your-repository.git` with your actual repository URL.
 ```
+````
