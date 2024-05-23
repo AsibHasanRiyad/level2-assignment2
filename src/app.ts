@@ -10,15 +10,15 @@ app.use(express.json());
 app.use("/api/products", ProductRoutes);
 app.use("/api/orders", OrderRoutes);
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
+});
+
 app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "Route not found",
   });
-});
-
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
 });
 
 export default app;
