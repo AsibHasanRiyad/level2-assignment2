@@ -1,11 +1,5 @@
-Here's a well-organized `README.md` file that includes all the instructions and code samples you provided:
-
 ````markdown
 # Order Management System
-
-This is an order management system for managing products and orders.
-
-## Getting Started
 
 ### Prerequisites
 
@@ -14,7 +8,7 @@ This is an order management system for managing products and orders.
 
 ### Installation
 
-1. Clone the git repository and open your terminal:
+1. Open your terminal and Clone the git repository
    ```sh
    git clone https://github.com/your-repository.git
    cd your-repository
@@ -164,10 +158,10 @@ In case a route is not found, the server will respond with:
 To check if the server is running, visit `http://localhost:3000/` and you should see:
 
 ```
-Hello World!
+Welcome to Order Management!
 ```
 
 ```
 
-Make sure to replace placeholders like `https://github.com/your-repository.git` with your actual repository URL. This `README.md` file provides clear instructions for setting up, running the application, and using the API endpoints.
+Make sure to replace placeholders like `https://github.com/your-repository.git` with your actual repository URL.
 ```
