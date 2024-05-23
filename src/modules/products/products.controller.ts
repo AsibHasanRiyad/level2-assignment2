@@ -1,11 +1,18 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./products.service";
+import {
+  TProductsUpdateValidationSchema,
+  TProductsValidationSchema,
+} from "./products.validation";
 
 // create product
 const createProduct = async (req: Request, res: Response) => {
   try {
     const productData = req.body;
-    const result = await ProductServices.createProduct(productData);
+
+    // data validation using zod
+    const zodParsedData = TProductsValidationSchema.parse(productData);
+    const result = await ProductServices.createProduct(zodParsedData);
     res.status(200).json({
       success: true,
       message: "Product created successfully!",
@@ -74,9 +81,10 @@ const updateSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const updatedData = req.body;
+    const zodParsedData = TProductsUpdateValidationSchema.parse(updatedData);
     const result = await ProductServices.updateSingleProduct(
       productId,
-      updatedData
+      zodParsedData
     );
     if (result) {
       res.status(200).json({

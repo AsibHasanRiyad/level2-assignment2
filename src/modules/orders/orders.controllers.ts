@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { OrderServices } from "./orders.service";
 import { ProductServices } from "../products/products.service";
 import { TProducts } from "../products/products.interface";
+import TOrdersValidationSchema from "./orders.validation";
+import { TProductsUpdateValidationSchema } from "../products/products.validation";
 
 // create a new order
 const createOrder = async (req: Request, res: Response) => {
@@ -32,7 +34,9 @@ const createOrder = async (req: Request, res: Response) => {
         message: "Insufficient quantity available in inventory",
       });
     } else {
-      const result = await OrderServices.createOrder(orderData);
+      // zod
+      const zodParsedData = TOrdersValidationSchema.parse(orderData);
+      const result = await OrderServices.createOrder(zodParsedData);
 
       const newQuantity = (availableQuantity as number) - quantity;
       // console.log(OrderingProduct);
@@ -43,9 +47,12 @@ const createOrder = async (req: Request, res: Response) => {
         (OrderingProduct as TProducts).inventory.inStock = false;
       }
 
+      // zod validation for Product updating during ordering
+      const zodUpdatedProductParsedData =
+        TProductsUpdateValidationSchema.parse(OrderingProduct);
       const update = await ProductServices.updateSingleProduct(
         productId,
-        OrderingProduct as TProducts
+        zodUpdatedProductParsedData
       );
       // console.log(update, "Update");
 
