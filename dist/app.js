@@ -13,7 +13,7 @@ app.use(express_1.default.json());
 app.use("/api/products", products_route_1.ProductRoutes);
 app.use("/api/orders", orders_route_1.OrderRoutes);
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Welcome to Order Management!");
 });
 app.use((req, res) => {
     res.status(404).json({
