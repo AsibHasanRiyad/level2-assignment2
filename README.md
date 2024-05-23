@@ -1,3 +1,4 @@
+````markdown
 # Order Management System
 
 ### Prerequisites
@@ -7,13 +8,11 @@
 
 ### Installation
 
-````
 1. Open your terminal and Clone the git repository
    ```sh
    git clone https://github.com/your-repository.git
    cd your-repository
-````
-
+   ```
 ````
 
 2. Install all dependencies:
@@ -166,4 +165,3 @@ Welcome to Order Management!
 
 Make sure to replace placeholders like `https://github.com/your-repository.git` with your actual repository URL.
 ```
-````
